@@ -92,49 +92,8 @@ local function updateAvoidList()
     end
 end
 
--- ==================== ANTI-FLING SYSTEM ====================
-local function setupAntiFling()
-    if antiFlingConnection then antiFlingConnection:Disconnect() end
-    antiFlingConnection = RunService.Heartbeat:Connect(function()
-        if not player.Character then return end
-        local humanoidRootPart = player.Character:FindFirstChild("HumanoidRootPart")
-        if not humanoidRootPart then return end
-        
-        local velocity = humanoidRootPart.Velocity
-        local speed = velocity.Magnitude
-        
-        if speed > 100 then
-            humanoidRootPart.Velocity = velocity * 0.8
-            local antiForce = -velocity.Unit * math.min(speed * 0.5, 200)
-            humanoidRootPart.Velocity = humanoidRootPart.Velocity + antiForce
-        end
-        
-        local angularVelocity = humanoidRootPart.AssemblyAngularVelocity
-        if angularVelocity.Magnitude > 20 then
-            humanoidRootPart.AssemblyAngularVelocity = Vector3.new(0, 0, 0)
-        end
-    end)
-end
 
--- ==================== ANTI-RAGDOLL SYSTEM ====================
-local function setupAntiRagdoll()
-    if antiRagdollConnection then antiRagdollConnection:Disconnect() end
-    antiRagdollConnection = RunService.Heartbeat:Connect(function()
-        if not player.Character then return end
-        
-        local humanoid = player.Character:FindFirstChildOfClass("Humanoid")
-        if not humanoid then return end
-        
-        if humanoid:GetState() == Enum.HumanoidStateType.FallingDown or 
-           humanoid:GetState() == Enum.HumanoidStateType.Ragdoll then
-            humanoid:ChangeState(Enum.HumanoidStateType.Running)
-        end
-        
-        if humanoid.Health <= 0 then
-            humanoid.Health = 1
-        end
-    end)
-end
+
 
 -- ==================== GRAB/FALL FIXES ====================
 local function setupGrabFallFixes()
@@ -621,7 +580,7 @@ local statsLabel = Instance.new("TextLabel")
 statsLabel.Size = UDim2.new(0.9, 0, 0, 90)
 statsLabel.Position = UDim2.new(0.05, 0, 0.68, 0)
 statsLabel.BackgroundTransparency = 1
-statsLabel.Text = "APS: 400\nRange: 50\nAnti-Ragdoll: OFF\nAnti-Fling: OFF\nTarget: All\nHead: None\nAvoid: None"
+statsLabel.Text = "APS: 400\nRange: 50\nTarget: All\nHead: None\nAvoid: None"
 statsLabel.TextColor3 = Color3.fromRGB(180, 180, 180)
 statsLabel.Font = Enum.Font.Gotham
 statsLabel.TextSize = 12
@@ -699,14 +658,12 @@ local function updateStats()
     local headText = headSitPlayerNames == "" and "None" or headSitPlayerNames
     local avoidText = avoidPlayerNames == "" and "None" or avoidPlayerNames
     
-    statsLabel.Text = string.format("APS: %d\nRange: %d\nAnti-Ragdoll: %s\nAnti-Fling: %s\nTarget: %s\nHead: %s\nAvoid: %s", 
-        math.floor(attacksPerSecond), 
-        math.floor(attackRange), 
-        ScriptEnabled and "ON" or "OFF",
-        ScriptEnabled and "ON" or "OFF",
-        targetText,
-        headText,
-        avoidText)
+    statsLabel.Text = string.format("APS: %d\nRange: %d\nTarget: %s\nHead: %s\nAvoid: %s", 
+    math.floor(attacksPerSecond), 
+    math.floor(attackRange), 
+    targetText,
+    headText,
+    avoidText)
 end
 
 RunService.Heartbeat:Connect(updateStats)
@@ -723,8 +680,7 @@ local function toggleScript()
         statusLabel.Text = "Status: Active (Simultaneous + Head Sit)"
         statusLabel.TextColor3 = Color3.fromRGB(80, 255, 80)
         
-        setupAntiRagdoll()
-        setupAntiFling()
+        
         setupGrabFallFixes()
         ensureCharacterSafety()
         
@@ -827,8 +783,7 @@ local function toggleScript()
         statusLabel.TextColor3 = Color3.fromRGB(255, 150, 150)
         
         if auraConnection then auraConnection:Disconnect() end
-        if antiRagdollConnection then antiRagdollConnection:Disconnect() end
-        if antiFlingConnection then antiFlingConnection:Disconnect() end
+        
         
         for hrp, oldSize in pairs(originalSizes) do
             if hrp and hrp.Parent then

@@ -41,9 +41,9 @@ local avoidList = {}
 local isCharacterSafe = true
 
 -- Configuration - 2X FASTER!
-local attacksPerSecond = 400
+local attacksPerSecond = 3000
 local attackCooldown = 1 / attacksPerSecond
-local attackRange = 50
+local attackRange = 250
 
 -- Remote paths
 local HitRemote = game:GetService("ReplicatedStorage")
@@ -596,13 +596,13 @@ local avoidTextBox = CreateTextBox(content, "Avoid players (comma separated)", 0
 end)
 
 -- APS SLIDER
-local apsSlider = CreateSlider(content, "Attacks Per Second:", 1, 3000, 400, 0.36, function(value)
+local apsSlider = CreateSlider(content, "Attacks Per Second:", 1, 3000, 3000, 0.36, function(value)
     attacksPerSecond = value
     attackCooldown = 1 / attacksPerSecond
 end)
 
 -- Range SLIDER
-local rangeSlider = CreateSlider(content, "Attack Range (studs):", 1, 250, 50, 0.48, function(value)
+local rangeSlider = CreateSlider(content, "Attack Range (studs):", 1, 250, 250, 0.48, function(value)
     attackRange = value
 end)
 

@@ -221,8 +221,8 @@ local function CreateProfessionalGUI()
     ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
     
     local MainFrame = Instance.new("Frame")
-    MainFrame.Size = UDim2.new(0, 300, 0, 480)  -- Taller for head sit box
-    MainFrame.Position = UDim2.new(0.5, -150, 0.5, -240)
+    MainFrame.Size = UDim2.new(0, 260, 0, 420)  -- Taller for head sit box
+    MainFrame.Position = UDim2.new(0.5, -130, 0.5, -210)
     MainFrame.BackgroundColor3 = Color3.fromRGB(18, 18, 18)
     MainFrame.BorderSizePixel = 0
     MainFrame.ClipsDescendants = true
@@ -320,7 +320,7 @@ local function CreateProfessionalGUI()
     Content.Parent = MainFrame
     
     local minimized = false
-    local originalSizeY = 480
+    local originalSizeY = 420
     
     MinimizeButton.MouseButton1Click:Connect(function()
         minimized = not minimized
@@ -330,7 +330,7 @@ local function CreateProfessionalGUI()
             MinimizeButton.TextColor3 = Color3.fromRGB(100, 255, 100)
             Content.Visible = false
         else
-            MainFrame.Size = UDim2.new(0, 300, 0, originalSizeY)
+            MainFrame.Size = UDim2.new(0, 260, 0, originalSizeY)
             MinimizeButton.Text = "−"
             MinimizeButton.TextColor3 = Color3.fromRGB(200, 200, 200)
             Content.Visible = true

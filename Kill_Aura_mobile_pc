@@ -221,7 +221,7 @@ local function CreateProfessionalGUI()
     ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
     
     local MainFrame = Instance.new("Frame")
-    MainFrame.Size = UDim2.new(0, 350, 0, 650)  -- Taller for head sit box
+    MainFrame.Size = UDim2.new(0, 300, 0, 500)  -- Taller for head sit box
     MainFrame.Position = UDim2.new(0.5, -200, 0.5, -350)
     MainFrame.BackgroundColor3 = Color3.fromRGB(18, 18, 18)
     MainFrame.BorderSizePixel = 0

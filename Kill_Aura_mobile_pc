@@ -221,7 +221,7 @@ local function CreateProfessionalGUI()
     ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
     
     local MainFrame = Instance.new("Frame")
-    MainFrame.Size = UDim2.new(0, 260, 0, 420)  -- Taller for head sit box
+    MainFrame.Size = UDim2.new(0, 280, 0, 440)  -- Taller for head sit box
     MainFrame.Position = UDim2.new(0.5, -130, 0.5, -210)
     MainFrame.BackgroundColor3 = Color3.fromRGB(18, 18, 18)
     MainFrame.BorderSizePixel = 0
@@ -248,7 +248,7 @@ local function CreateProfessionalGUI()
     UIStroke.Parent = MainFrame
     
     local TitleBar = Instance.new("Frame")
-    TitleBar.Size = UDim2.new(1, 0, 0, 50)
+    TitleBar.Size = UDim2.new(1, 0, 0, 60)
     TitleBar.BackgroundTransparency = 1
     TitleBar.Parent = MainFrame
     
@@ -285,8 +285,8 @@ local function CreateProfessionalGUI()
     VersionCorner.Parent = VersionBadge
     
     local CloseButton = Instance.new("TextButton")
-    CloseButton.Size = UDim2.new(0, 34, 0, 34)
-    CloseButton.Position = UDim2.new(1, -42, 0, 8)
+    CloseButton.Size = UDim2.new(0, 28, 0, 28)
+    CloseButton.Position = UDim2.new(1, -34, 0, 16)
     CloseButton.BackgroundColor3 = Color3.fromRGB(200, 50, 50)
     CloseButton.Text = "×"
     CloseButton.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -299,8 +299,8 @@ local function CreateProfessionalGUI()
     CloseCorner.Parent = CloseButton
     
     local MinimizeButton = Instance.new("TextButton")
-    MinimizeButton.Size = UDim2.new(0, 34, 0, 34)
-    MinimizeButton.Position = UDim2.new(1, -84, 0, 8)
+    MinimizeButton.Size = UDim2.new(0, 28, 0, 28)
+    MinimizeButton.Position = UDim2.new(1, -68, 0, 16)
     MinimizeButton.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
     MinimizeButton.Text = "−"
     MinimizeButton.TextColor3 = Color3.fromRGB(200, 200, 200)

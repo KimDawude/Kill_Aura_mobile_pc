@@ -320,7 +320,7 @@ local function CreateProfessionalGUI()
     Content.Parent = MainFrame
     
     local minimized = false
-    local originalSizeY = 700
+    local originalSizeY = 480
     
     MinimizeButton.MouseButton1Click:Connect(function()
         minimized = not minimized
@@ -330,7 +330,7 @@ local function CreateProfessionalGUI()
             MinimizeButton.TextColor3 = Color3.fromRGB(100, 255, 100)
             Content.Visible = false
         else
-            MainFrame.Size = UDim2.new(0, 400, 0, originalSizeY)
+            MainFrame.Size = UDim2.new(0, 300, 0, originalSizeY)
             MinimizeButton.Text = "−"
             MinimizeButton.TextColor3 = Color3.fromRGB(200, 200, 200)
             Content.Visible = true
